@@ -37,7 +37,7 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 
 // parse cookie
-app.use(cookieParser(process.env.COOKIE_SECRECT));
+app.use(cookieParser(process.env.COOKIE_SECRET));
 
 //routing setup
 

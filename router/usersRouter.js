@@ -1,6 +1,10 @@
 // external imports
 const express = require("express");
 const { check } = require("express-validator");
+const {
+  checkLogin,
+  redirectLoggedIn,
+} = require("../middlewares/common/checkLogin");
 
 // internal imports
 const {
@@ -18,11 +22,12 @@ const {
 const router = express.Router();
 
 // users page
-router.get("/", decorateHtmlResponse("Users"), getUsers);
+router.get("/", decorateHtmlResponse("Users"), checkLogin, getUsers);
 
 // add user
 router.post(
   "/",
+  checkLogin,
   avatarUpload,
   addUserValidators,
   addUserValidationHandler,
